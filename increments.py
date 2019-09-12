@@ -97,8 +97,6 @@ Example response (JSON) for the meter id `81` and the year `2018`:
 }
 """
 
-import jwt
-import pendulum
 import requests
 from pprint import pprint
 
@@ -112,14 +110,12 @@ YEAR = 2018
 
 if __name__ == '__main__':
     # Obtain a JSON web token
-    response = requests.post(f'{PROTOCOL}://{HOST}/api/token-auth/', {'username': USER, 'password': PASSWORD}).json()
-    token = response['token']
+    token = requests.post(
+        f'{PROTOCOL}://{HOST}/api/token-auth/', {'username': USER, 'password': PASSWORD}
+    ).json()['token']
     # Perform an API request with the token as header (Authorization: JWT <token>)
     response = requests.get(
         f'{PROTOCOL}://{HOST}/api/meterlog/increments/?meterId={METER_ID}&year={YEAR}',
         headers={'Authorization': f'JWT {token}'}
     ).json()
     pprint(response)
-    # Optionally you can check the expiration date of the token
-    expires = jwt.JWT().decode(token, None, False)['exp']
-    print(f'Token is valid until {pendulum.from_timestamp(expires)}')
