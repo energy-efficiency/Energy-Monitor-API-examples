@@ -23,7 +23,7 @@ Obtain and decode the JSON Web Token for authentication.
 
 ### increments.py
 
-Load aggregated consumption/generation of metering devices.
+Load aggregated consumption/generation data of metering devices.
 
 ### points.py
 
