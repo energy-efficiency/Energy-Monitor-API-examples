@@ -24,6 +24,7 @@ if __name__ == '__main__':
     # Timestamp and meter id have to be unique together. The API will response with an status code 400
     # if a log entry with the same timestamp (after rounding) already exists for the meter.
     # In this case you should discard the log entry (do not send it again as it will fail repeatedly).
+    # The optional measures (the ones not marked as required) can be omitted from the payload or set to `None`.
     payload = {
         # Unique meter id (required)
         'meter_uid': METER_UID,
