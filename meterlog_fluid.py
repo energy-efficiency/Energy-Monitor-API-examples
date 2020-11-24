@@ -19,7 +19,7 @@ if __name__ == '__main__':
     # This token can be used for requests until it expires (at the time of this writing tokens expire after 5 minutes).
     token = get_token(PROTOCOL, HOST, USER, PASSWORD)
 
-    # Send a request that creates one log data entry for an fluid measuring unit (meter).
+    # Send a request that creates a set of metrics that represents a measurement for an fluid measuring unit (meter).
     # The timestamp will be rounded to log interval precision (e.g. 15 minutes).
     # Timestamp and meter id have to be unique together. The API will response with an status code 400
     # if a log entry with the same timestamp (after rounding) already exists for the meter.
@@ -43,7 +43,7 @@ if __name__ == '__main__':
         'avgPressure': None,  # Pressure [bar]
         'minPressure': None,  # Minimum pressure in the averaging window [bar]
         'maxPressure': None,  # Maximum pressure in the averaging window [bar]
-        'temperature': None,  # Temperature [°C]
+        'temperature': random.uniform(0, 100),  # Temperature [°C]
         'temperature2': None,  # Temperature 2 [°C]
         'relHumidity': None,  # Relative humidity [%]
         'dewpoint': None,  # Dew point [°C]
