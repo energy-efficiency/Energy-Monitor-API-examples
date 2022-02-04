@@ -174,9 +174,9 @@ from pprint import pprint
 from auth_token import get_token
 
 HOST = '192.168.2.5'
-PROTOCOL = 'http'
-KEY = '1e240412-ed77-455e-9a4c-d300b9bd1552'
-TOKEN = 'aqu8xal4Lrzdv3r5eBHTTpl4S5w9iwu6'
+PROTOCOL = 'https'
+KEY = ''
+TOKEN = ''
 
 METER_ID = 81
 YEAR = 2018

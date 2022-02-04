@@ -8,9 +8,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('API example')
 
 HOST = '192.168.2.5'
-PROTOCOL = 'http'
-KEY = 'user'
-TOKEN = 'user'
+PROTOCOL = 'https'
+KEY = ''
+TOKEN = ''
 
 METER_UID = '6959ea0c-8248-40cf-834c-a5afc51c2af9'
 

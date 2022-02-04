@@ -7,10 +7,10 @@ from auth_token import get_token
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('API example')
 
-HOST = 'localhost:8181'
-PROTOCOL = 'http'
-KEY = 'cfd50064-61b0-4394-819e-495b978cd8bd'
-TOKEN = 'Wb1wV009q0NhLE5LuAOGgr9xe3KSAyeq'
+HOST = '192.168.2.5'
+PROTOCOL = 'https'
+KEY = ''
+TOKEN = ''
 
 METER_UID = '6959ea0c-8248-40cf-834c-a5afc51c2af9'
 
