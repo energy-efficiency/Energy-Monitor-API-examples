@@ -7,17 +7,17 @@ from auth_token import get_token
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('API example')
 
-HOST = '192.168.2.5'
+HOST = 'localhost:8181'
 PROTOCOL = 'http'
-USER = 'user'
-PASSWORD = 'user'
+KEY = 'cfd50064-61b0-4394-819e-495b978cd8bd'
+TOKEN = 'Wb1wV009q0NhLE5LuAOGgr9xe3KSAyeq'
 
 METER_UID = '6959ea0c-8248-40cf-834c-a5afc51c2af9'
 
 if __name__ == '__main__':
     # Request an auth token.
     # This token can be used for requests until it expires (at the time of this writing tokens expire after 5 minutes).
-    token = get_token(PROTOCOL, HOST, USER, PASSWORD)
+    token = get_token(PROTOCOL, HOST, KEY, TOKEN)
 
     # Send a request that will create a set of metrics that represents a measurement for an electrical measuring unit (meter).
     # The timestamp will be rounded to log interval precision (e.g. 15 minutes).
@@ -43,12 +43,13 @@ if __name__ == '__main__':
         'reactiveEnergyOut': None,  # Total reactive energy out [varh]
     }
     response = requests.post(
-        f'{PROTOCOL}://{HOST}/api/meterlog/electrical/',
-        payload,
-        headers={'Authorization': f'JWT {token}'}
+        f'{PROTOCOL}://{HOST}/api/meterlog/rows/',
+        json=payload,
+        headers={'Authorization': f'JWT {token}', }
     )
     if response.status_code != 201:
         # The API will respond with error details if possible (e.g. {"timestamp":"Duplicate timestamp."}).
         logger.error('Error response with staus code %s: %r', response.status_code, response.text)
         raise SystemExit
-    logger.info('Response: %s', response.text)
+    logger.info('Response status: %s', response.status_code)
+    logger.info('Response text: %s', response.text)
